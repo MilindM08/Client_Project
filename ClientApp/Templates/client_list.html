@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Client List{% endblock %}
+
+{% block content %}
+<h2>Client List</h2>
+<ul>
+    {% for client in clients %}
+        <li>
+            {{ client.name }} - <a href="{% url 'client_detail'  %}">Details</a> - <a href="{% url 'edit_client' %}">Edit</a>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'register_client' %}">Register New Client</a>
+
+{% endblock %}
+
+
+
+
+
+
+
+{% comment %} {% extends "base.html" %}
+{% block title %} 
+  Client List
+{% endblock title %}
+{% block body %}
+    <h1>Client List</h1>
+    <ul>
+        {% for client in clients %}
+            <li><a href="{% url 'client_detail' client.id %}">{{ client.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'logout' %}">Logout</a>
+{% endblock body %}   {% endcomment %}

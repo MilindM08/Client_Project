@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <!--Header-->
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">ClientProjectApp</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/client_list">Client List</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/register_client">Register</a>
+                      </li>
+                      {% if user.is_authenticated %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="/logout_view">Logout</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'add_project' %}">Add Project</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'project_list' %}">Projects List </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/assigned_projects"> Assigned Projects  </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'client_edit' %}">Edit Client</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'client_delete' %}">Delete Client </a>
+                      </li>
+                      <li class="nav-item">
+                       {% comment %}  <a class="nav-link" href="{% url'client_detail' %}">client_detail </a> {% endcomment %}
+                        <a class="nav-link" href="{% url 'client_detail'  %}">Client Detail</a>
+
+                      </li>
+                      {% else %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="/login_view">Login</a>
+                      </li>
+                      {% endif %}
+                  </div>
+                </div>
+              </nav>
+        </div>
+    <!--End Of Header-->
+    
+        <div class="row">
+            {% block body %}
+
+            {% endblock %}
+        </div>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+    <!--Footer-->
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Address</h3>
+                <hr>
+                <h6>Street:12/14, 2 Nd Floor, 12/14 Kazi Sayed Street,Chinch Bunder <br>
+                    City:Mumbai <br>
+                    State/province/area:Maharashtra <br>
+                    Phone number:  02223441149 <br>
+                    Zip code:  400009 <br>
+                    Country calling code: +91 <br>
+                    Country:  India</h6>
+                
+            </div>
+            <div class="col-md-4">
+                <h3>Links</h3>
+                <hr>
+                
+            </div>
+            <div class="col-md-4">
+                <h3>Contact_Us</h3>
+                <hr>
+                <h2><a href=""><i class="bi bi-whatsapp"></i></a><br></h2>
+                <h2><a href="https://www.instagram.com/codewithharry/?hl=en"><i class="bi bi-instagram"></i></a><br></h2>
+                <h2><a href="https://www.youtube.com/@CodeWithHarry"><i class="bi bi-youtube"></i></a><br></h2>
+                
+            </div>
+        </div>
+        <!--End Of footer-->
+    </div>
+</body>
+</html>
